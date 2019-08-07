@@ -8,7 +8,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="disableNegativePadding.js"></script>
+    <script src="disableNegativePadding.min.js"></script>
     <script>
       var init = function() {
         var asymmetrys = [].slice.call(
@@ -23,82 +23,54 @@
   </head>
   <body>
 	  <h1>
-          <span class="L">Disable Negative Padding</span><span class="R">for Internet Explorer 11</span>
-          </h1>
+      Disable Negative Padding
+      <small>for Internet Explorer 11</small>
+    </h1>
     <div class="column asymmetry--l">
-      <h2>Asymmetry L</h2>
+      <h2>Sample L</h2>
+      <p>Works only with Internet Explorer</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
-    </div>
-
-    <div class="column">
-      <h2>Normal</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        This sample prevent "<strong>padding-left</strong>" from becoming a negative value
+        when <strong>window.Innerwidth < 704px</strong>.
       </p>
     </div>
 
     <div class="column asymmetry--r">
-      <h2>Asymmetry R</h2>
+      <h2>Sample R</h2>
+      <p>Works only with Internet Explorer</p>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        This sample prevent "<strong>padding-right</strong>" from becoming a negative value
+        when <strong>window.Innerwidth < 704px</strong>.
       </p>
     </div>
 
-    <div class="border">
-      <div class="column asymmetry--l">
-        <h2>Border L</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+    <div class="usage">
+      <h2>Usage</h2>
+      <h3>Import</h3>
+      <div class="pre">
+        &lt;<span class="c5">script</span> <span class="c3">src</span>=<span class="c4">"disableNegativePadding.js"</span>&gt;&lt;/<span class="c5">script</span>&gt;
       </div>
-
-      <div class="column">
-        <h2>Border</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+      <p>or</p>
+      <div class="pre">
+        <span class="c2">require</span>(<span class="c4">"disableNegativePadding"</span>);
       </div>
-
-      <div class="column asymmetry--r">
-        <h2>Border R</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+      <h3>Instantiation</h3>
+      <div class="pre">
+        <span class="c1">var</span> $target <span class="c1">=</span> <span class="c2">document</span>.<span class="c3">querySelector</span>(<span class="c4">'.target'</span>);<br>
+        <span class="c1">new</span> <span class="c3">disableNegativePadding</span>($target);
       </div>
     </div>
 
-    <div class="shadow">
-      <div class="column asymmetry--l">
-        <h2>Shadow L</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
+    <footer>
+      <dl>
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/webdev-jp-net/disableNegativePadding">Disable Negative Padding</a></dd>
+      </dl>
+      <dl>
+        <dt>Related tips (codepen)</dt>
+        <dd><a href="https://codepen.io/webdev-jp-net/pen/ymbzxq">Asymmetric layout container</a></dd>
+      </dl>
+    </footer>
 
-      <div class="column">
-        <h2>Shadow</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-
-      <div class="column asymmetry--r">
-        <h2>Shadow R</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      </div>
-    </div>
   </body>
 </html>
