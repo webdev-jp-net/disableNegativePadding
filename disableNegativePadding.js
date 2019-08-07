@@ -8,25 +8,15 @@
  * @see {@link https://codepen.io/webdev-jp-net/pen/ymbzxq}
  */
 var disableNegativePadding = function($target) {
-  var isIE = window.navigator.userAgent.toLowerCase().indexOf("trident");
-  if (isIE === -1) return;
-
+  if (window.navigator.userAgent.toLowerCase().indexOf("trident") === -1) return;
   if (!$target) return;
   this.$target = $target;
-
-  var breakpoint = window.getComputedStyle($target, null).getPropertyValue('max-width');
-  if (!breakpoint) return;
-  this.breakpoint = breakpoint;
-
-  this.isBreak = null;
   this.pointer = [];
-
   this.init();
 };
 
 // destory
 disableNegativePadding.prototype.destory = function() {
-  this.isBreak = null;
   this.pointer = [];
   window.removeEventListener('resize', this.getBreakpoint);
 };
@@ -34,20 +24,18 @@ disableNegativePadding.prototype.destory = function() {
 // initialize
 disableNegativePadding.prototype.init = function() {
   this.destory();
-
   ['padding-top', 'padding-left', 'padding-right', 'padding-bottom'].forEach(function(name) {
     var value = this.$target.currentStyle.getPropertyValue(name);
     if (value.match(/calc/g)) this.pointer.push(name);
-    else if(this.actMeasure(name) < 0) this.$target.stylesetProperty(name, 0);
+    else if(this.actMeasure(name) < 0) this.$target.style.setProperty(name, 0);
   }, this);
-
   window.addEventListener('resize', this.watchPadding.bind(this), false);
   this.watchPadding.call(this);
 };
 
 /**
  * Measure padding
- * @param { Array } padding positions
+ * @param { String } padding positions
  * @return { Number } padding value
  */
 disableNegativePadding.prototype.actMeasure = function(position) {
@@ -59,6 +47,6 @@ disableNegativePadding.prototype.actMeasure = function(position) {
 disableNegativePadding.prototype.watchPadding = function() {
   this.pointer.forEach(function(name) {
     this.$target.style.removeProperty(name);
-    if(!this.actMeasure(name)) this.$target.style.setProperty(name, 0);
+    if(this.actMeasure(name) < 0) this.$target.style.setProperty(name, 0);
   }, this);
 };
